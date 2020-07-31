@@ -2,19 +2,26 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { addItem } from "../../redux/cart/cart.actions";
-import CustomButton from "../custom-button/custom-button.component";
-import "./collection-item.styles.scss";
+
+import {
+  CollectionItemContainer,
+  CollectionFooterContainer,
+  AddButton,
+  BackgroundImage,
+  NameContainer,
+  PriceContainer,
+} from "./collection-styles.styles";
 
 const CollectionItem = ({ item, match, history }) => {
   const { name, price, imageUrl, linkUrl, type } = item;
   return (
-    <div className='collection-item'>
-      <div className='image' style={{ backgroundImage: `url(${imageUrl})` }} />
-      <div className='collection-footer'>
-        <span className='name'>{name}</span>
-        <span className='price'>{price}</span>
-      </div>
-      <CustomButton
+    <CollectionItemContainer>
+      <BackgroundImage style={{ backgroundImage: `url(${imageUrl})` }} />
+      <CollectionFooterContainer>
+        <NameContainer>{name}</NameContainer>
+        <PriceContainer>{price}</PriceContainer>
+      </CollectionFooterContainer>
+      <AddButton
         onClick={() => {
           window.location.pathname === "/shop"
             ? history.push(`${match.url}/${type}/${linkUrl}`)
@@ -23,8 +30,8 @@ const CollectionItem = ({ item, match, history }) => {
         intervted
       >
         View More
-      </CustomButton>
-    </div>
+      </AddButton>
+    </CollectionItemContainer>
   );
 };
 
