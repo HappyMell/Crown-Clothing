@@ -6,17 +6,17 @@ import "./item-info.styles.scss";
 const ItemInfo = ({ item, match, addItem }) => {
   const { name, price, imageUrl } = item;
   return (
-    <div className='item-info'>
-      <div className='wrapper'>
-        <div className='intro'>
+    <div className="item-info">
+      <div className="wrapper">
+        <div className="intro">
           <h1>{name}</h1>
           <div
-            className='image'
+            className="image"
             style={{ backgroundImage: `url(${imageUrl})` }}
           />
         </div>
-        <div class='description'>
-          <div className='price'>price: ${price}</div>
+        <div className="description">
+          <div className="price">price: ${price}</div>
         </div>
       </div>
       <CustomButton onClick={() => addItem(item)} inverted>
